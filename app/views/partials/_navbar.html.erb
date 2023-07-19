@@ -1,0 +1,46 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to current_site, root_path, title: current_site, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto">
+        <%= link_to "Page", "#", class: "nav-link" %>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav">
+
+      </ul>
+
+
+    </div>
+  </div>
+  <% if user_signed_in? %>
+  <%= link_to "Профіль", edit_user_registration_path, class:"btn btn-sm btn-outline-secondary"%>
+  <%= button_to "Вихід", destroy_user_session_path, method: :delete, class:"btn btn-sm btn-outline-secondary"%>
+  <% else %>
+  <%#= link_to "Вхід", new_user_session_path, class:"btn btn-sm btn-outline-secondary"%>
+  <button class="btn btn-outline-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#loginform" aria-expanded="false" aria-controls="collapseWidthExample">
+    Вхід
+  </button>
+    <div class="collapse" id="loginform">
+      <div class="card card-body" style="width: 300px;">
+        <%=render 'devise/sessions/new'%>
+      </div>
+  </div>
+  <%#= link_to "Реєстрація", new_user_registration_path, class:"btn btn-sm btn-outline-secondary"%>
+  <button class="btn btn-outline-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#signupform" aria-expanded="false" aria-controls="collapseWidthExample">
+      Реєстрація
+  </button>
+    <div class="collapse" id="signupform">
+      <div class="card card-body" style="width: 300px;">
+        <%=render 'devise/registrations/new'%>
+      </div>
+    </div>
+  <% end %>
+</nav>
