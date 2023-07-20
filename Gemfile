@@ -73,3 +73,7 @@ end
 
 gem "cssbundling-rails"
 gem "devise", "~> 4.9"
+
+#s3 server amazon
+gem "aws-sdk-s3", require: false
+
