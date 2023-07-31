@@ -36,7 +36,6 @@
 <%= auto_discovery_link_tag(:atom, content_for(:atom), {title: "Atom Feed"}) if content_for?(:atom) %>
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
-
 <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 <%= javascript_importmap_tags %>
 <%= csrf_meta_tags %>

@@ -77,3 +77,7 @@ gem "devise", "~> 4.9"
 #s3 server amazon
 gem "aws-sdk-s3", require: false
 
+gem 'bootstrap-icons-helper'
+gem "font-awesome-rails"
+
+#gem 'bootstrap-icons'

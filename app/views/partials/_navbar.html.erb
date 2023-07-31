@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto">
-        <%= link_to "Page", "#", class: "nav-link" %>
+        <%= link_to "Про нас", about_path, class: "nav-link" %>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -16,31 +16,22 @@
       <ul class="navbar-nav">
 
       </ul>
-
-
+      <% if user_signed_in? %>
+        <%= link_to current_user.email, edit_user_registration_path, class:"px-1 mx-1"%>
+        <%= button_to "Вийти", destroy_user_session_path, method: :delete, class:"btn btn-outline-secondary px-1 mx-1"%>
+      <% else %>
+        <div class="dropdown px-1">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Увійти
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end px-1" style="width:21rem">
+            <%=render 'users/sessions/new'%>
+          </ul>
+        </div>
+        <div class="grid text-center">
+          <%= link_to "Стати виконавцем", new_user_registration_path, class:"btn btn-outline-primary px-1 mx-1"%>
+        </div>
+      <% end %>
     </div>
   </div>
-  <% if user_signed_in? %>
-  <%= link_to "Профіль", edit_user_registration_path, class:"btn btn-sm btn-outline-secondary"%>
-  <%= button_to "Вихід", destroy_user_session_path, method: :delete, class:"btn btn-sm btn-outline-secondary"%>
-  <% else %>
-  <%#= link_to "Вхід", new_user_session_path, class:"btn btn-sm btn-outline-secondary"%>
-  <button class="btn btn-outline-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#loginform" aria-expanded="false" aria-controls="collapseWidthExample">
-    Вхід
-  </button>
-    <div class="collapse" id="loginform">
-      <div class="card card-body" style="width: 300px;">
-        <%=render 'devise/sessions/new'%>
-      </div>
-  </div>
-  <%#= link_to "Реєстрація", new_user_registration_path, class:"btn btn-sm btn-outline-secondary"%>
-  <button class="btn btn-outline-secondary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#signupform" aria-expanded="false" aria-controls="collapseWidthExample">
-      Реєстрація
-  </button>
-    <div class="collapse" id="signupform">
-      <div class="card card-body" style="width: 300px;">
-        <%=render 'devise/registrations/new'%>
-      </div>
-    </div>
-  <% end %>
 </nav>

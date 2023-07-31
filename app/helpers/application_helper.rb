@@ -4,12 +4,7 @@ module ApplicationHelper
   end
 
   def current_site
-    Rails.application.class.module_parent.name
-      .underscore
-      .humanize
-      .split
-      .map(&:capitalize)
-      .join(' ')
+    @current_site = "IT-Exchange"
   end
 
   def current_title

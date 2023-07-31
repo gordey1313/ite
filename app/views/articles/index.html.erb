@@ -11,9 +11,11 @@ Our blog has <%= Article.public_count %> articles and counting!
           <%elsif article.scheduled?%>
             <strong class="btn btn-info">Scheduled</strong>
           <%end%>
-          <h3 class="mb-0"><%= link_to article.title, article %></h3>
-          <div class="mb-1 text-body-secondary">Nov 12</div>
-          <p class="card-text mb-auto"><%= article.content%></p>
+          <h5 class="mb-0"><%= link_to article.title, article %></h5>
+          <div class="mb-1 text-body-secondary"><%= article.created_at.strftime("%B %d")%></div>
+          <p class="card-text mb-auto">
+            <%= truncate((raw article.content.to_plain_text), length: 100)%>
+          </p>
             <%= link_to "Continue reading", article, class: "icon-link gap-1 icon-link-hover stretched-link"%>
         </div>
         <div class="col-auto d-none d-lg-block">

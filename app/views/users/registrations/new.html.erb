@@ -1,0 +1,91 @@
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Реєстрація виконавця</h2>
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "users/shared/error_messages", resource: resource %>
+        <%#= render 'partials/messages' %>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">@</span>
+          <%#= f.text_field :user_name, autofocus: true, placeholder:"Username", aria-label:"Username", aria-describedby:"basic-addon1" %>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">First and last name</span>
+          <input type="text" aria-label="First name" class="form-control">
+          <input type="text" aria-label="Last name" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Телефон</span>
+          <input type="text" class="form-control" placeholder="+380" aria-label="Phone" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Місто</span>
+          <%= collection_select(:title, :article_id, Article.all, :id, :title, {prompt: true}, {class: "form-select"}) %>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">e-mail</span><%#= f.label :email, for: "floatingInput"  %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"name@example.com"%>
+        </div>
+      
+        <div class="input-group mb-3">
+          <span class="input-group-text">Password
+          <%#= f.label :password %>
+          <% if @minimum_password_length %>
+          <em> (<%= @minimum_password_length %> characters minimum)</em>
+          <% end %></span>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
+        </div>
+      
+        <div class="input-group mb-3">
+          <span class="input-group-text">Password confirmation</span>
+          <%#= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "Sign up", class:"btn btn-primary w-100 py-2" %>
+        </div>
+      <% end %>
+      
+      <%= render "users/shared/links" %>
+      
+    </div>
+
+    <div class="col">
+      <div class="row row-cols-1 row-cols-sm-2 g-4">
+        <div class="col d-flex flex-column gap-2">
+          <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+            <i class="bi bi-collection" width="1em" height="1em" ></i>
+          </div>
+          <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
+          <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+            <i class="bi bi-gear-fill" width="1em" height="1em" ></i>
+          </div>
+          <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
+          <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+            <i class="bi bi-speedometer" width="1em" height="1em" ></i>
+          </div>
+          <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
+          <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+            <i class="bi bi-table" width="1em" height="1em" ></i>
+          </div>
+          <h4 class="fw-semibold mb-0 text-body-emphasis">Featured title</h4>
+          <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
