@@ -6,8 +6,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto">
-        <%= link_to "Про нас", about_path, class: "nav-link" %>
+        <li><%= link_to t('about_us'), about_path, class: "nav-link" %></li>
+        <li><%= link_to t('service'), service_path, class: "nav-link" %></li>
+        <li><%= link_to t('contacts'), contacts_path, class: "nav-link" %></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Цікавинки
+          </a>
+          <%= content_tag(:ul, class:'dropdown-menu') do %>
+            <%if user_signed_in?%>
+              <% Article.find_each do |article|%>
+                <% unless article.archived? %>
+                  <%= content_tag(:li, (link_to article.title, article, class: "dropdown-item"))%>                
+                <%end%>
+              <%end%>
+            <%else%>
+              <% Article.published.find_each do |article|%>
+                <% unless article.archived? %>
+                  <%= content_tag(:li, (link_to article.title, article, class: "dropdown-item"))%>                
+                <%end%>
+              <%end%>           
+            <%end%>
+          <%end%>
+        </li>
+        <%= render 'partials/change_locale' %>
       </ul>
+          
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

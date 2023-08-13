@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
+
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, except: [:index, :new, :create]
-  
+
+
   def index
     @articles = user_signed_in? ? Article.sorted : Article.published.sorted
   end
@@ -38,16 +40,16 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to root_path, status: :see_other
   end
-
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+  
   private
     def article_params
       params.require(:article).permit(:title, :content, :status, :published_at)
     end
   
-  def set_article
-    @article = user_signed_in? ? Article.find(params[:id]) : Article.published.find(params[:id])
-        
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path
-  end
+    def set_article
+      @article = user_signed_in? ? Article.find(params[:id]) : Article.published.find(params[:id])
+            
 end

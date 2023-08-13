@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def current_site
-    @current_site = "IT-Exchange"
+    @current_site = t('it_exchange')
   end
 
   def current_title
@@ -91,5 +91,5 @@ module ApplicationHelper
   def resource_class
     devise_mapping.to
   end
-  
+
 end

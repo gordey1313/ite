@@ -29,22 +29,22 @@
         </div>
       
         <div class="input-group mb-3">
-          <span class="input-group-text">Password
+          <span class="input-group-text"><%=t('activerecord.attributes.user.password')%>
           <%#= f.label :password %>
           <% if @minimum_password_length %>
-          <em> (<%= @minimum_password_length %> characters minimum)</em>
+          <em> <%= t('users.shared.minimum_password_length', count: @minimum_password_length) %></em>
           <% end %></span>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control"%>
         </div>
       
         <div class="input-group mb-3">
-          <span class="input-group-text">Password confirmation</span>
+          <span class="input-group-text"><%=t('activerecord.attributes.user.password_confirmation')%></span>
           <%#= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
       
         <div class="actions">
-          <%= f.submit "Sign up", class:"btn btn-primary w-100 py-2" %>
+          <%= f.submit t('.sign_up'), class:"btn btn-primary w-100 py-2" %>
         </div>
       <% end %>
       
