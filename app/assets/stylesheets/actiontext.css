@@ -38,11 +38,6 @@ body {
   height: 100%;
 }
 
-.form-signin {
-  /*max-width: 21rem;
-  padding: 1rem;*/
-}
-
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
