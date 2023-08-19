@@ -1,17 +1,18 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="input-group">
+      <%= form.label t('commenter'), class:"input-group-text"%>
+      <%= form.text_field :commenter, :value=>current_user.email, class:"form-control" %>
+  </div>
+    <%= form.label :content%>
+    <%= form.rich_text_area :content, class:"form-control"%>
+  <div class="input-group mt-3 mb-3">
+    <%= form.label t('status'), class:"input-group-text" %>
+    <%= form.select(:status, [
+                                [I18n.t("public"), 'public'],
+                                [I18n.t('private'), 'private'],
+                                [I18n.t('archived'), 'archived']
+                              ], {selected: [I18n.t('public'),'public']}, {:class=> "form-select"}) %>
+    <%= form.submit t('create')+' '+t('comment'), class: "btn btn-outline-secondary"%>
+  </div>
+    
 <% end %>

@@ -11,7 +11,7 @@
         <li><%= link_to t('contacts'), contacts_path, class: "nav-link" %></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Цікавинки
+            <%=t("articles")%>
           </a>
           <%= content_tag(:ul, class:'dropdown-menu') do %>
             <%if user_signed_in?%>
@@ -34,12 +34,8 @@
           
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
       </form>
-
-      <ul class="navbar-nav">
-
-      </ul>
       <% if user_signed_in? %>
         <%= link_to current_user.email, edit_user_registration_path, class:"px-1 mx-1"%>
         <%= button_to "Вийти", destroy_user_session_path, method: :delete, class:"btn btn-outline-secondary px-1 mx-1"%>

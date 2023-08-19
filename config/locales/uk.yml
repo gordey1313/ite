@@ -4,6 +4,26 @@ uk:
   it_exchange: 'ІТ-Біржа'
   service: "Будівельні послуги"
   contacts: "Контакти"
+  articles: "Цікавинки"
+  article: "Цікавинку"
+  new_article: "Нова ціквинка"
+  edit: "Редагувати"
+  destroy: "Видалити"
+  create: "Додати"
+  draft: "Чернетка"
+  scheduled: "Запланований"
+  comments: "Коментарі"
+  comment: "Коментар"
+  commenter: "Автор коментаря"
+  add_a_comment: "Додати коментар"
+  continue_reading: "Читати далі"
+  new_article: "Нова Цікавинка"
+  status: "Статус"
+  public: "Загальнодоступний"
+  private: "Приватний"
+  archived: "Архівний"
+  published_at: "Дата публікації"
+  title: "Назва"
   activerecord:
     errors:
       messages:

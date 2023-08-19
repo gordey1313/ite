@@ -21,6 +21,10 @@ class Article < ApplicationRecord
     scope :published, -> { where("published_at <= ?", Date.current)}
     scope :scheduled, -> { where("published_at > ?", Date.current)}
 
+    def translated_status
+        I18n.t(status, :scope => 'status')
+    end
+
     def draft?
         published_at.nil?
     end

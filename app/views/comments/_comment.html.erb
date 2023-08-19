@@ -1,18 +1,18 @@
 <% unless comment.archived? %>
   <p>
-    <strong>Commenter:</strong>
+    <strong><%=t('commenter')%>:</strong>
     <%= comment.commenter %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
+    <strong><%=t('comment')%>:</strong>
+    <%= comment.content%>
   </p>
 
   <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
+    <%= link_to t('destroy')+' '+t('comment'), [comment.article, comment], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
-                } %>
+                }, class: "btn btn-outline-secondary"%>
   </p>
 <% end %>

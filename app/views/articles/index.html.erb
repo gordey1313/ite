@@ -1,5 +1,4 @@
-<h1>Articles</h1>
-Our blog has <%= Article.public_count %> articles and counting!
+<h1><%=t('articles')%></h1>
 <div class="row mb-2">
 <% @articles.each do |article| %>
   <% unless article.archived? %>
@@ -7,16 +6,16 @@ Our blog has <%= Article.public_count %> articles and counting!
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-2 d-flex flex-column position-static">
           <% if article.draft? %>
-            <strong class="btn btn-secondary">Draft</strong>
+            <strong class="btn btn-secondary"><%=t('draft')%></strong>
           <%elsif article.scheduled?%>
-            <strong class="btn btn-info">Scheduled</strong>
+            <strong class="btn btn-info"><%=t('scheduled')%></strong>
           <%end%>
           <h5 class="mb-0"><%= link_to article.title, article %></h5>
           <div class="mb-1 text-body-secondary"><%= article.created_at.strftime("%B %d")%></div>
           <p class="card-text mb-auto">
             <%= truncate((raw article.content.to_plain_text), length: 100)%>
           </p>
-            <%= link_to "Continue reading", article, class: "icon-link gap-1 icon-link-hover stretched-link"%>
+            <%= link_to t("continue_reading"), article, class: "icon-link gap-1 icon-link-hover stretched-link"%>
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
@@ -25,5 +24,5 @@ Our blog has <%= Article.public_count %> articles and counting!
     </div>
   <%end%>
 <% end %>
-    <%= link_to "New Article", new_article_path, class:"btn btn-success" %>  
+    <%= link_to t("new_article"), new_article_path, class:"btn btn-success" %>  
 </div>

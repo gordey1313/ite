@@ -1,18 +1,17 @@
-<h1><%= @article.title %></h1>
+<div class="col-8 offset-2 col-sm-8 offset-sm-2">
+  <h3 mb-3 fw-normal><%= @article.title %></h3>
+      <%= @article.content %>
+      <% if user_signed_in?%>
+          <%= link_to t('edit'), edit_article_path(@article), class: "btn btn-outline-secondary my-3"%>
+          <%= link_to t('destroy'), article_path(@article), data: {
+                              turbo_method: :delete,
+                              turbo_confirm: "Are you sure?"
+                            }, class: "btn btn-outline-secondary my-3"%>
+          <h4 mb-3 fw-normal><%=t('comments')%></h4>
+          <%= render @article.comments %>
 
-<p><%= @article.content %></p>
-<% if user_signed_in?%>
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
-<h2>Comments</h2>
-<%= render @article.comments %>
+          <h5 mb-3 fw-normal><%=t('add_a_comment')%>:</h5>
+          <%= render 'comments/form' %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
-
-<%end%>
+      <%end%>
+  </div>

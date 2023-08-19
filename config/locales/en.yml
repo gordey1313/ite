@@ -33,3 +33,15 @@ en:
   hello: "Hello world"
 
   it_exchange: 'IT-Exchange'
+  create: "Сreate"
+  comment: "Сomment"
+  commenter: "Commenter"
+  status: "Status"
+  published_at: "Published at"
+  title: "Title"
+  edit: "Edit"
+  article: "Article"
+  status: "Status"
+  public: "Public"
+  private: "Private"
+  archived: "Archived"

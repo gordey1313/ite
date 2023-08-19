@@ -14,17 +14,16 @@
       <div><%= message %></div>
     <% end %>
   </div>
-
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </div>
-  <div>
-    <%= form.label :published_at %><br>
-    <%= form.date_select :published_at, include_blank:true %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="input-group mb-3 grid" style="--bs-columns: 3;">
+    <%= form.label t('status'), class: "input-group-text" %>
+    <%= form.select(:status, [
+                                [I18n.t("public"), 'public'],
+                                [I18n.t('private'), 'private'],
+                                [I18n.t('archived'), 'archived']
+                              ], {selected: [I18n.t('public'),'public']}, {:class=> "form-select"}) %>
+    <%= form.label t('published_at'), class: "input-group-text"%>
+    <%= form.date_select(:published_at, {include_blank:true}, {:class => 'form-select'}) %>
+    <%= form.submit t('edit')+' '+t('article'), class: "btn btn-outline-secondary"%>
+    <%= link_to t('devise.shared.links.back'), :back, class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
